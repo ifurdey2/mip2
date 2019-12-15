@@ -113,4 +113,41 @@ void insert_list(Tlist *l,int index, realty val){ //7
    }
 };
 
+char * toupper_str(char *str){ //8
+   char *tmp=malloc(strlen(str)*sizeof(char));
+   int i;
+   for(i=0;str[i];i++){
+    tmp[i]=toupper(str[i]);
+   }
+   tmp[i]='\0';
+   return tmp;
+}
+int delete_from_list(Tlist *l,  char * sub_str){
+   node *cur, *prev=NULL, *next;
+   char *find_loc=NULL;
+   cur=l->first;
+   int n=0;
+   while (cur) {
+     find_loc=strstr(toupper_str(cur->value.Location),toupper_str(sub_str));
+     if(find_loc){
+         ++n;
+         next=cur->next;
+         if(prev){
+            prev->next=next;
+            if(next==NULL){
+                l->last=prev;
+            }
+            free(cur);
+            cur=next;
+         }else{
+            l->first=cur=next;
+         }
+     }else{
+        prev=cur;
+        cur=cur->next;
+     }
+   }
+   return n;
+}
+
 #endif // TLIST_H_INCLUDED
