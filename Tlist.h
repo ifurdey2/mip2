@@ -50,4 +50,29 @@ void free_list(Tlist* l){  //4
   l->last=NULL;
 };
 
+int loadformfile(Tlist *l){  //5
+  int n=0;
+  FILE *f;
+  char sym[100];
+  realty buf;
+  f=fopen(FILENAME,"r");
+  if(!f){
+    perror("Zaznamy neboli nacitane\n");
+    return n;
+  }
+  free_list(l);
+  while(fscanf(f,  "%100[^\n]\n",sym) == 1){
+    if(fscanf(f, "%50[^\n]\n", &buf.Category));
+    if(fscanf(f, "%50[^\n]\n", &buf.Location));
+    if(fscanf(f, "%100[^\n]\n", &buf.Street));
+    if(fscanf(f, "%d\n", &buf.Square));
+    if(fscanf(f, "%d\n", &buf.Price));
+    if(fscanf(f, "%200[^\n]\n", &buf.Description));
+    ++n;
+    push_back(l,buf);
+  }
+fclose(f)  ;
+return n;
+}
+
 #endif // TLIST_H_INCLUDED
