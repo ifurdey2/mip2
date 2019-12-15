@@ -89,5 +89,28 @@ void print_All_List(Tlist l){  //6
     }
     printf("\n");
 }
+void insert_list(Tlist *l,int index, realty val){ //7
+   int i=1;
+   node *buf=l->first;
+   node *ins;
+   for (; buf && i<index; buf = buf->next,i++) {
+    ;
+   }
+   if(i!=index){
+    push_back(l,val);
+    return;
+   }
+   if(buf==l->first){
+     ins=malloc(sizeof(node));
+     ins->next=l->first;
+     ins->value=val;
+     l->first=ins;
+   }else{
+     ins=malloc(sizeof(node));
+     ins->next=buf->next;
+     ins->value=val;
+     buf->next=ins;
+   }
+};
 
 #endif // TLIST_H_INCLUDED
