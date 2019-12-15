@@ -173,4 +173,19 @@ void find_list(Tlist l, int price){ //9
     }
 }
 
+int chenge_list(Tlist *l,char *Location, realty val){ //10
+   node *cur=l->first;
+   char *find_loc=NULL;
+   int n=0;
+   while (cur) {
+     find_loc=strstr(toupper_str(cur->value.Location),toupper_str(Location));
+     if(find_loc){
+         ++n;
+       cur->value=val;
+     }
+        cur=cur->next;
+   }
+   return n;
+}
+
 #endif // TLIST_H_INCLUDED
