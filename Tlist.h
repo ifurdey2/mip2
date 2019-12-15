@@ -16,5 +16,14 @@ typedef struct {
   char  Description[200];
 }realty;
 
+typedef struct Node {
+    realty value;
+    struct Node* next;
+} node;
+
+typedef struct List {            //2
+    node* first;
+    node* last;
+} Tlist;
 
 #endif // TLIST_H_INCLUDED
