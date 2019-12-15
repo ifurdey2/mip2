@@ -150,4 +150,27 @@ int delete_from_list(Tlist *l,  char * sub_str){
    return n;
 }
 
+void find_list(Tlist l, int price){ //9
+ const node* buff = l.first;
+ int n=1;
+ int flag=0;
+ for (; buff; buff = buff->next) {
+        if(buff->value.Price<=price){
+          printf("%d.\n",n);
+          printf("kategoria ponuky:: %s\n", buff->value.Category);
+          printf("miesto ponuky: %s\n", buff->value.Location);
+          printf("ulica: %s\n", buff->value.Street);
+          printf("rozloha: %d\n", buff->value.Square);
+          printf("cena: %d\n", buff->value.Price);
+          printf("popis: %s\n", buff->value.Description);
+          ++n;
+          flag=1;
+        }
+    }
+    printf("\n");
+    if(!flag){
+        printf("Search only offers with high price!\n");
+    }
+}
+
 #endif // TLIST_H_INCLUDED
