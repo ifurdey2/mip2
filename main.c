@@ -74,7 +74,12 @@ int main()
                   printf("Aktualizovalo sa %d zaznamov\n",n);
                   break;
                }
-               
+               default:{
+                         printf("Unknown team!\n");
+                         break;
+                      }
+                   }
+               }
                
     return 0;
 }
