@@ -40,4 +40,14 @@ void push_back(Tlist* l, realty val) { // ‚ÒÚ‡‚ÎˇÂÚ ˝ÎÂÏÂÌÚ �
     }
 };
 
+void free_list(Tlist* l){  //4
+  node *tmp;
+  while(l->first!=NULL){
+    tmp=l->first->next;
+    free(l->first);
+    l->first=tmp;
+  }
+  l->last=NULL;
+};
+
 #endif // TLIST_H_INCLUDED
