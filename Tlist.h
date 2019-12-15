@@ -75,4 +75,19 @@ fclose(f)  ;
 return n;
 }
 
+void print_All_List(Tlist l){  //6
+ const node* buff = l.first;
+ int n=1;
+ for (; buff; buff = buff->next,n++) {
+        printf("%d.\n",n);
+        printf("kategoria ponuky: %s\n", buff->value.Category);
+        printf("miesto ponuky: %s\n", buff->value.Location);
+        printf("ulica: %s\n", buff->value.Street);
+        printf("rozloha: %d\n", buff->value.Square);
+        printf("cena: %d\n", buff->value.Price);
+        printf("popis: %s\n", buff->value.Description);
+    }
+    printf("\n");
+}
+
 #endif // TLIST_H_INCLUDED
